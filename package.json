@@ -1,0 +1,32 @@
+{
+  "name": "treehouse_techdegree_fsjs_unit08",
+  "version": "1.0.0",
+  "description": "Library database manager",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndriiKodola/Treehouse_Techdegree_FSJS_Unit08.git"
+  },
+  "author": "AndrewMarv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndriiKodola/Treehouse_Techdegree_FSJS_Unit08/issues"
+  },
+  "homepage": "https://github.com/AndriiKodola/Treehouse_Techdegree_FSJS_Unit08#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "nodemon": "^1.18.11",
+    "pug": "^2.0.3",
+    "sequelize": "^5.3.5",
+    "sequelize-cli": "^5.4.0",
+    "sqlite3": "^4.0.6",
+    "yargs": "^13.2.2",
+    "yargs-parser": "^13.0.0"
+  },
+  "devDependencies": {},
+  "keywords": []
+}
