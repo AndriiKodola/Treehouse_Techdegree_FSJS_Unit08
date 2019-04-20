@@ -6,6 +6,7 @@ block content
     a.button(href="/books/new") Add a new book
     form.querying-container(action="" method="post")
       input(type="text" placeholder= 'What are you looking for?' name='searchQuery')
+      input#search-button(type="submit", value="")
       select(name='perPage')
         option(value='all')= 'Show all'
         option(value='5')= 'Five per page'
@@ -25,7 +26,7 @@ block content
           td= book.author
           td= book.genre
           td= book.year
-  if perPage!='All'
+  if (perPage!='All')
     nav.nav-bar
       - let pageNum = 1;
       while pageNum <= numOfPages

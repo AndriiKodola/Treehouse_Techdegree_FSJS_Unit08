@@ -15,8 +15,10 @@ app.use('/static', express.static('public'));
 app.set('view engine', 'pug');
 
 const bookRoutes = require('./routes/books');
+const pageRoutes = require('./routes/pages');
 
 app.use('/books', bookRoutes);
+app.use('/pages', pageRoutes);
 
 /** Routes */
 app.get('/', (req, res) => {

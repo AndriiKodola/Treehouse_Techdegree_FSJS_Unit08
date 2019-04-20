@@ -114,13 +114,30 @@ input[type=text] {
 }
 
 .querying-container input {
-  width: 65%;
+  width: 61%;
   padding: 7px;
   color: #838383;
   border: 2px solid;
   border-color: #D8B493 #fff #fff #D8B493;
   border-radius: 20px 0 0 20px;
   font-size: 1em;
+}
+
+#search-button {
+  height: 100%;
+  width: 33px;
+  font-size: 1em;
+  background: #D8B493 url("../img/search.png");
+  padding: 6px;
+  margin: 0;
+  border: 0;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+#search-button:hover {
+  color: black;
+  background-color: #01b189;
 }
 
 .querying-container select {

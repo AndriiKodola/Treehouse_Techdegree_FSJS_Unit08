@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const Sequelize = require('sequelize');
 
-const Op = require('../models').Op;
+const Op = Sequelize.Op;
 
 const Book = require('../models').Book;
 
@@ -20,52 +21,29 @@ router.post('/', (req, res, next) => {
   if (searchQuery !== "") {
     query.where = {
       [Op.or]: [
-        { title: searchQuery },
-        { author: searchQuery },
-        { genre: searchQuery },
-        { year: searchQuery }
+        { title:
+          { [Op.like] : `%${searchQuery}%` }
+        },
+        { author:
+          { [Op.like] :  `%${searchQuery}%` },
+        },
+        { genre:
+          { [Op.like] :  `%${searchQuery}%` },
+        },
+        { year:
+          { [Op.like] :  `%${searchQuery}%` }
+        }
       ]
     };
   }
+
   if (perPage !== "All") {
     query.limit = perPage;
-    res.redirect('/pages/1');
+    return res.redirect('/pages/1');
   }
 
   Book.findAll(query).then(books => {
     res.render('index', { books, title: 'Bookshelf' });
-  }).catch(err => res.sendStatus(500));
-});
-
-/** Pages GET route */
-router.get('/pages/:pageNum', (req, res, next) => {
-  const { searchQuery, perPage } = req.body;
-  const { pageNum } = req.params;
-  let query = { order: [['title', 'ASC']], limit: perPage };
-
-  if (searchQuery !== "") {
-    query.where = {
-      [Op.or]: [
-        { title: searchQuery },
-        { author: searchQuery },
-        { genre: searchQuery },
-        { year: searchQuery }
-      ]
-    };
-  }
-
-  Book.findAndCountAll(query).then(result => {
-    const { count, rows } = result;
-    const numOfPages = count / perPage;
-    const firstOnPage = (pageNum - 1) * perPage;
-    const lastOnPage = firstOnPage + perPage;
-    let books = [];
-
-    for (let i = firstOnPage; i < lastOnPage; i++) {
-      books.push(rows[i]);
-    }
-
-    res.render('index', { books, title: 'Bookshelf', numOfPages });
   }).catch(err => res.sendStatus(500));
 });
 
