@@ -15,12 +15,12 @@ a {
   }
 
 a.button, input[type=submit] {
-  color: white;
-  background: #019875;
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
   padding: 10px 14px 12px;
-  font-size: 14px;
-  border-radius: 2px;
+  font-size: 1em;
+  border: 2px solid;
+  border-color: #D8B493 #fff #fff #D8B493;
+  border-radius: 20px;
   cursor: pointer;
 }
 
@@ -38,7 +38,7 @@ input[type=submit] {
   }
 
 p {
-  margin: 20px auto;
+  margin: 10px 2px auto;
 }
 
 ul {
@@ -46,6 +46,17 @@ ul {
   list-style-type: none;
   margin-bottom: 10px;
   line-height: 1.3em;
+}
+
+h1 {
+  color: #fff;
+  padding-left: 1em;
+  background-image: linear-gradient(to right, #D8B493, #fff 90%);
+  border: 2px solid;
+  border-color: #fff;
+  border-radius: 0 0 0 20px;
+  margin-bottom: 0px;
+  font-size: 3em;
 }
 
 h2 {
@@ -94,4 +105,31 @@ input[type=text] {
 
 .error {
   color: rgb(236, 15, 15);
+}
+
+/* Querying container styles*/
+
+.querying-container {
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.querying-container input {
+  width: 65%;
+  padding: 7px;
+  color: #838383;
+  border: 2px solid;
+  border-color: #D8B493 #fff #fff #D8B493;
+  border-radius: 20px 0 0 20px;
+  font-size: 1em;
+}
+
+.querying-container select {
+  width: 18%;
+  padding: 6px;
+  background-color: #fff;
+  color: #838383;
+  border: 2px solid;
+  border-color: #D8B493 #D8B493 #fff #fff;
+  border-radius: 0 20px 20px 0;
+  font-size: 1em;
 }

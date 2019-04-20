@@ -1,9 +1,15 @@
 extends ./layout
 
 block content
-  h1 Books
+  h1 Bookshelf
   p
-    a.button(href="/books/new") Create New Book
+    a.button(href="/books/new") Add a new book
+    form.querying-container(action="" method="post")
+      input(type="text" placeholder= 'What are you looking for?' name='searchQuery')
+      select(name='perPage')
+        option(value='all')= 'Show all'
+        option(value='5')= 'Five per page'
+        option(value='10')= 'Ten per page'
   table
     thead
       tr
@@ -19,3 +25,8 @@ block content
           td= book.author
           td= book.genre
           td= book.year
+  if perPage!='All'
+    nav.nav-bar
+      - let pageNum = 1;
+      while pageNum <= numOfPages
+       a.nav-link(href=`/pages/${pageNum}`)= pageNum
