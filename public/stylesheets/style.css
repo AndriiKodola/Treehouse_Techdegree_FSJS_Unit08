@@ -150,3 +150,24 @@ input[type=text] {
   border-radius: 0 20px 20px 0;
   font-size: 1em;
 }
+
+/** Pagination */
+
+.nav-bar {
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-top: 20px;
+}
+
+a.nav-link {
+  background-image: linear-gradient(to top, #D8B493, #fff 90%);
+  color: #838383;
+  padding: 10px 15px 10px 5px;
+  border: 2px solid;
+  border-color: #fff;
+  border-radius: 0 0 20px 20px;
+  font-size: 1.4em;
+}
+
+a.nav-link:hover {
+  color: black;
+}

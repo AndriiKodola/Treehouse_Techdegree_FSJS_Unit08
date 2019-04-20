@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Sequelize = require('sequelize');
+const url = require('url');
 
 const Op = Sequelize.Op;
 
@@ -16,8 +17,10 @@ router.get('/', (req, res, next) => {
 /** Search POST route */
 router.post('/', (req, res, next) => {
   const { searchQuery, perPage } = req.body;
+  /** Creating a query to pass to findAll() */
   let query = { order: [['title', 'ASC']] };
 
+  /** Creating a query to pass to findAll() */
   if (searchQuery !== "") {
     query.where = {
       [Op.or]: [
@@ -37,9 +40,12 @@ router.post('/', (req, res, next) => {
     };
   }
 
-  if (perPage !== "All") {
-    query.limit = perPage;
-    return res.redirect('/pages/1');
+  /** Redirect to paginated pages route in case of not "Show all" option has been chosen. See pages routes */
+  if (perPage !== "all") {
+    return res.redirect(url.format({
+      pathname: "/pages/1",
+      query: req.body
+    }));
   }
 
   Book.findAll(query).then(books => {

@@ -26,8 +26,7 @@ block content
           td= book.author
           td= book.genre
           td= book.year
-  if (perPage!='All')
+  if (numOfPages)
     nav.nav-bar
-      - let pageNum = 1;
-      while pageNum <= numOfPages
-       a.nav-link(href=`/pages/${pageNum}`)= pageNum
+      - for ( let i = 1; i <= numOfPages; i++)
+       a.nav-link(href=`/pages/${i}?searchQuery=${searchQuery}&perPage=${perPage}`)= i

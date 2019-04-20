@@ -8,10 +8,12 @@ const Book = require('../models').Book;
 
 /** Pages GET route */
 router.get('/:pageNum', (req, res, next) => {
-  const { searchQuery, perPage } = req.body;
+  const { searchQuery, perPage } = req.query;
   const { pageNum } = req.params;
-  let query = { order: [['title', 'ASC']], limit: perPage };
+  /** Creating a query to pass to findAll() */
+  let query = { order: [['title', 'ASC']] };
 
+  /** Creating a query to pass to findAll() */
   if (searchQuery !== "") {
     query.where = {
       [Op.or]: [
@@ -33,16 +35,17 @@ router.get('/:pageNum', (req, res, next) => {
 
   Book.findAndCountAll(query).then(result => {
     const { count, rows } = result;
-    const numOfPages = count / perPage;
+    const numOfPages = Math.ceil(count / perPage);
     const firstOnPage = (pageNum - 1) * perPage;
     const lastOnPage = firstOnPage + perPage;
     let books = [];
 
+    /** Creating books array for current page */
     for (let i = firstOnPage; i < lastOnPage; i++) {
       books.push(rows[i]);
     }
 
-    res.render('index', { books, title: 'Bookshelf', numOfPages });
+    res.render('index', { books, title: 'Bookshelf', numOfPages, searchQuery, perPage });
   }).catch(err => res.sendStatus(500));
 });
 
