@@ -128,6 +128,8 @@ input[type=text] {
   width: 33px;
   font-size: 1em;
   background: #D8B493 url("../img/search.png");
+  background-repeat: no-repeat;
+  background-size: contain;
   padding: 6px;
   margin: 0;
   border: 0;
@@ -165,7 +167,7 @@ a.nav-link {
   border: 2px solid;
   border-color: #fff;
   border-radius: 0 0 20px 20px;
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
 
 a.nav-link:hover {
