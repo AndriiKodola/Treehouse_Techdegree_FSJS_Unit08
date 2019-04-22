@@ -1,6 +1,7 @@
 body {
   padding: 10px 50px 50px;
   font: 18px "Garamond", serif;
+  max-width: 750px;
 }
 
 a {
@@ -114,7 +115,7 @@ input[type=text] {
 }
 
 .querying-container input {
-  width: 61%;
+  width: 65%;
   padding: 7px;
   color: #838383;
   border: 2px solid;
@@ -143,7 +144,7 @@ input[type=text] {
 }
 
 .querying-container select {
-  width: 18%;
+  width: 25%;
   padding: 6px;
   background-color: #fff;
   color: #838383;

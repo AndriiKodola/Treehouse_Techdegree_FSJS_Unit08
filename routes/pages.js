@@ -77,11 +77,6 @@ router.post('/:pageNum', (req, res, next) => {
     };
   }
 
-  console.log(searchQuery, perPage);
-  console.dir(query);
-  console.log(perPage !== "all");
-  console.dir(req.body);
-
   if (perPage !== "all") {
     return res.redirect(url.format({
       pathname: "/pages/1",
