@@ -77,7 +77,7 @@ router.post('/:pageNum', (req, res, next) => {
     };
   }
 
-  if (perPage !== "all") {
+  if (perPage !== "all" &&  perPage !== "no-pagination") {
     return res.redirect(url.format({
       pathname: "/pages/1",
       query: req.body
@@ -85,7 +85,7 @@ router.post('/:pageNum', (req, res, next) => {
   }
 
   Book.findAll(query).then(books => {
-    res.render('index', { books, title: 'Bookshelf' });
+    res.render('index', { books, title: 'Bookshelf', searchQuery });
   }).catch(err => res.sendStatus(500));
 });
 

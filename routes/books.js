@@ -41,7 +41,7 @@ router.post('/', (req, res, next) => {
   }
 
   /** Redirect to paginated pages route in case of not "Show all" option has been chosen. See pages routes */
-  if (perPage !== "all") {
+  if (perPage !== "all" && perPage !== "no-pagination") {
     return res.redirect(url.format({
       pathname: "/pages/1",
       query: req.body
